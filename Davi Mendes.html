@@ -4,57 +4,60 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Product Grid Test</title>
-        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="Davi Mendes.css">
     </head>
     <body>
-        <main class="page">
-            <section class="controls">
-                <input id="search-input" placeholder="Search a Product" class="controls-search" type="search" name="controls-search" id="">
+        <div class="page-wrapper">
+            <main class="page">
+                <section class="controls">
+                    <input id="search-input" placeholder="Search a Product" class="controls-search" type="search" name="controls-search" id="">
+                    <button id="add-sample-btn" class="controls-add-sample btn-states">Add Sample Product</button>
+                </section>
+                <section id="products" class="products">
+                    <article class="product-card">
+                        <img class="product-card-img" draggable="false" src="./assets/model-pic-one.jpg" alt="">
+                        <div class="product-card-content">
+                            <h2 class="product-card-title">Jacket</h2>
+                            <p class="product-card-price">$90</p>
+                            <p class="product-card-description">Rugged earth-toned canvas with a tailored fit. The perfect everyday layer.</p>
+                            <button class="product-card-action btn-states">
+                                Add To Cart
+                            </button>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <img class="product-card-img" draggable="false" src="./assets/model-pic-two.jpg" alt="">
+                        <div class="product-card-content">
+                            <h2 class="product-card-title">Button-Up Shirt</h2>
+                            <p class="product-card-price">$87</p>
+                            <p class="product-card-description">Breathable organic cotton in a soft moss hue. Effortless style from desk to dinner.</p>
+                            <button class="product-card-action btn-states">
+                                Add To Cart
+                            </button>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <img class="product-card-img" draggable="false" src="./assets/model-pic-three.jpg" alt="">
+                        <div class="product-card-content">
+                            <h2 class="product-card-title">bomber jacket</h2>
+                            <p class="product-card-price">$120</p>
+                            <p class="product-card-description">Sleek, wind-resistant silhouette with ribbed trim for a sharp, urban edge.</p>
+                            <button class="product-card-action btn-states">
+                                Add To Cart
+                            </button>
+                        </div>
+                    </article>
+                </section>
 
-                <button id="add-sample-btn" class="controls-add-sample">Add Sample Product</button>
-            </section>
-            <section id="products" class="products">
-                <article class="product-card">
-                    <img class="product-card-img" src="./assets/model-pic-one.jpg" alt="">
-
-                    <div class="product-card-content">
-                        <h2 class="product-card-title">Jacket</h2>
-                        <p class="product-card-description">Short Description</p>
-                        <p class="product-card-price">$90</p>
-                        <button class="product-card-action">
-                            Add To Cart
-                        </button>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <img class="product-card-img" src="./assets/model-pic-two.jpg" alt="">
-
-                    <div class="product-card-content">
-                        <h2 class="product-card-title">Shirt</h2>
-                        <p class="product-card-description">Short Description</p>
-                        <p class="product-card-price">$90</p>
-                        <button class="product-card-action">
-                            Add To Cart
-                        </button>
-                    </div>
-                </article>
-
-                <article class="product-card">
-                    <img class="product-card-img" src="./assets/7529.jpg" alt="">
-
-                    <div class="product-card-content">
-                        <h2 class="product-card-title">Shoes</h2>
-                        <p class="product-card-description">Short Description</p>
-                        <p class="product-card-price">$90</p>
-                        <button class="product-card-action">
-                            Add To Cart
-                        </button>
-                    </div>
-                </article>
-            </section>
-        </main>
+                <div id="not-found-message" class="not-found-message hidden">
+                    <h2 class="not-found-message-title">Search Not Found</h2>
+                    <p class="not-found-message-description">We were not able to find any products matching your search. Try checking the spelling, using different keywords, or browsing our available products.</p>
+                </div>
+            </main>
+        </div>
     </body>
     <script src="./Davi Mendes.js"></script>
 </html>

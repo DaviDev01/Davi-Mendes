@@ -1,6 +1,7 @@
 const addSampleProductBtn = document.getElementById('add-sample-btn');
 const productsElement = document.getElementById('products');
 const searchInputElement = document.getElementById('search-input');
+const searchNotFoundElement = document.getElementById('not-found-message');
 
 function renderProduct(product) {
     const cardElement = document.createElement('article');
@@ -8,22 +9,22 @@ function renderProduct(product) {
     cardElement.className = "product-card";
 
     cardElement.innerHTML = `
-        <img class="product-card-img" src="${product?.image}" alt="${product?.title}">
+        <img class="product-card-img" draggable="false" src="${product?.image}" alt="${product?.title}">
         
         <div class="product-card-content">
             <h2 class="product-card-title">
             ${product?.title}
             </h2>
 
-            <p class="product-card-description">
-            ${product?.description}
-            </p>
-
             <p class="product-card-price">
             $${product?.price}
             </p>
 
-            <button class="product-card-action">
+            <p class="product-card-description">
+            ${product?.description}
+            </p>
+
+            <button class="product-card-action btn-states">
             Add to Cart
             </button>
         </div>
@@ -33,9 +34,11 @@ function renderProduct(product) {
 }
 
 function searchProduct() {
-    const searchTerm = searchInputElement.value.toLowerCase();
+    const searchTerm = searchInputElement.value.toLowerCase().trim();
     
-    const productCards = document.querySelectorAll('.product-card')
+    const productCards = document.querySelectorAll('.product-card');
+
+    let productsVisible = 0;
 
     productCards.forEach(productCard => {
         const cardTitle = productCard.querySelector('.product-card-title').textContent.toLowerCase();
@@ -43,20 +46,31 @@ function searchProduct() {
         const matches = cardTitle.includes(searchTerm);
 
         productCard.classList.toggle('hidden', !matches);
+
+        matches && productsVisible++;
     });
+
+    searchNotFoundElement.classList.toggle('hidden', (productsVisible > 0) || (searchTerm === ""));
 }
 
 addSampleProductBtn.addEventListener('click', function () {
     const sampleProductData = {
         title: 'Jacket',
-        description: 'Comfortable Jacket',
+        description: 'Rugged earth-toned canvas with a tailored fit. The perfect everyday layer.',
         image: './assets/model-pic-one.jpg',
         price: 90
     }
 
     const cardElement = renderProduct(sampleProductData);
 
+    if (searchInputElement.value !== '') {
+        searchInputElement.value = '';
+        searchProduct();
+    }
+
     productsElement.appendChild(cardElement);
+    console.log(searchInputElement.value);
+    
 });
 
 searchInputElement.addEventListener('input', searchProduct);
